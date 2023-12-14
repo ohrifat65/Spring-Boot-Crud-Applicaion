@@ -18,7 +18,12 @@ public class empController {
 	public String EmpReg() {
 		return "employeeReg.html";
 	}
-	
+	//Save 
+	@PostMapping("/submitForm")
+	public String Save(@ModelAttribute empModel ma) {
+		repo.save(ma);
+		return "info.html";
+	}
 	@PostMapping("/updateForm")
 	public String UpdateF(@RequestParam int eId, @ModelAttribute empModel m) {
 		empModel eModel = repo.getOne(eId);
